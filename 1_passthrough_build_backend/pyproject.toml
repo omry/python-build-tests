@@ -1,5 +1,4 @@
 [build-system]
 requires = ["setuptools", "wheel"] 
-backend-path = ["build_helper"]
+backend-path = ["."]
 build-backend = "build_helper"
-
