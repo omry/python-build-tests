@@ -41,3 +41,22 @@ Processing ./plugins/p1
 WARNING: Discarding file:///home/omry/dev/test_pip/plugins_use_case/plugins/p1. Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.
 ERROR: Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.
 ```
+
+This also fails with --no-build-isolation:
+```
+$ pip install plugins/p1/ --no-build-isolation
+Processing ./plugins/p1
+    ERROR: Command errored out with exit status 1:
+     command: /home/omry/miniconda3/envs/test-pip/bin/python -c 'import sys, setuptools, tokenize; sys.argv[0] = '"'"'/tmp/pip-req-build-ngbxwzko/setup.py'"'"'; __file__='"'"'/tmp/pip-req-build-ngbxwzko/setup.py'"'"';f=getattr(tokenize, '"'"'open'"'"', open)(__file__);code=f.read().replace('"'"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' egg_info --egg-base /tmp/pip-pip-egg-info-h_qj05w9
+         cwd: /tmp/pip-req-build-ngbxwzko/
+    Complete output (6 lines):
+    Traceback (most recent call last):
+      File "<string>", line 1, in <module>
+      File "/tmp/pip-req-build-ngbxwzko/setup.py", line 8, in <module>
+        from build_helper import get_version
+    ModuleNotFoundError: No module named 'build_helper'
+    Appending root locaiton to sys.path /
+    ----------------------------------------
+WARNING: Discarding file:///home/omry/dev/test_pip/plugins_use_case/plugins/p1. Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.
+ERROR: Command errored out with exit status 1: python setup.py egg_info Check the logs for full command output.
+```
