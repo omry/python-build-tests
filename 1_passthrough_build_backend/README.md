@@ -2,13 +2,11 @@ layout:
 ```
 $ tree
 .
-├── build-tools
-│   ├── build_helper # not a PYTHONPATH root!
-│   │   └── __init__.py
-│   └── __init__.py
+├── build-tools    # NOT a pythonpath root.
+│   └── build_helper
+│       └── __init__.py
 ├── example
 │   └── __init__.py
-├── __init__.py
 ├── pyproject.toml
 ├── README.md
 └── setup.py
@@ -22,13 +20,13 @@ backend-path = ["build-tools"]
 build-backend = "build_helper"
 ```
 
-`build_helper/__init__.py`:
+`build-tools/build_helper/__init__.py`:
 ```python
 # Exporting those as is to allow us to play the part of a build backend.
 from setuptools.build_meta import build_sdist
 from setuptools.build_meta import build_wheel
 
-# get_version is available to setup.py
+# Additional functions here will be available to setup.py
 def get_version():
     return "1.0.3"
 
